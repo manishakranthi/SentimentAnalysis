@@ -15,7 +15,7 @@ from nltk.stem.wordnet import WordNetLemmatizer
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 
-loaded_model = pickle.load(open('filename', 'rb'))
+loaded_model = pickle.load(open('sentiment_analysis_model.p', 'rb'))
 
 def text_cleaning(line_from_column):
     text = line_from_column.lower()
@@ -29,26 +29,18 @@ def text_cleaning(line_from_column):
     words = ' '.join(words)
     return text 
 
-def load():
-	''' Load the calculated TFIDF weights'''
-
-	df = None
-	with open('tfidf.pickle', 'rb') as f:
-		df = pickle.load(f)
-	return df 
-
 if __name__ == '__main__':
     st.title('Financial Sentiment Analysis :bar_chart:')
     st.write('A simple sentiment analysis classification app')
-    st.subheader('Input the Statment below')
+    st.subheader('Input the text below')
     sentence = st.text_area('Enter your text here',height=200)
     predict_btt = st.button('predict')
-    loaded_model = pickle.load(open('filename', 'rb')) 
+    loaded_model = pickle.load(open('sentiment_analysis_model.p', 'rb')) 
     if predict_btt:
         clean_text = []
         i = text_cleaning(sentence)
         clean_text.append(i)
-        data = load(clean_text)
+        data = clean_text
 
         # st.info(data)
         prediction = loaded_model.predict(data)
