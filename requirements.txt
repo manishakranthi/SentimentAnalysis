@@ -2,5 +2,3 @@ pandas
 scikit-learn
 streamlit 
 nltk
-textblob
-word_tokenize
