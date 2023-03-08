@@ -45,9 +45,9 @@ if __name__ == '__main__':
         # st.info(data)
         prediction = loaded_model.predict(data)
 
-        prediction_prob_negative = prediction[0][-1]
-        prediction_prob_neutral = prediction[0][0]
-        prediction_prob_positive= prediction[0][1]
+        prediction_prob_negative = prediction[1][-1]
+        prediction_prob_neutral = prediction[1][0]
+        prediction_prob_positive= prediction[1][1]
 
         prediction_class = prediction(axis=-1)[0]
         print(prediction)
