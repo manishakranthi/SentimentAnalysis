@@ -42,12 +42,12 @@ if __name__ == '__main__':
         clean_text.append(i)
         data = clean_text
 
-        # st.info(data)
+      
         prediction = loaded_model.predict(data)
 
-        prediction_prob_negative = prediction[-1]
-        prediction_prob_neutral = prediction[0]
-        prediction_prob_positive= prediction[1]
+        prediction_prob_negative = prediction[-1][-1]
+        prediction_prob_neutral = prediction[-1][0]
+        prediction_prob_positive= prediction[-1][1]
 
         prediction_class = prediction(axis=-1)[0]
         print(prediction)
